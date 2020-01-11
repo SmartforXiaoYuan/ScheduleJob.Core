@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,11 +10,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ScheduleJob.Core.Extensions;
 
 namespace ScheduleJob.Core
 {
     public class Startup
     {
+        private object apiVersionNmae = "V1";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -24,17 +28,20 @@ namespace ScheduleJob.Core
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddControllers().AddNewtonsoftJson(options =>  //(默认小写)修改api返回的字段
-            //{
-            //    // 忽略循环引用
-            //    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-            //    // 不使用驼峰
-            //    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-            //    // 设置时间格式
-            //    options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
-            //    // 如字段为null值，该字段不会返回到前端
-            //    // options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-            //}); 
+            services.AddControllers();
+            services.AddSwaggerSetup();
+
+                //.AddNewtonsoftJson(options =>  //(默认小写)修改api返回的字段
+                //{
+                //    // 忽略循环引用
+                //    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                //    // 不使用驼峰
+                //    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                //    // 设置时间格式
+                //    options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                //    // 如字段为null值，该字段不会返回到前端
+                //    // options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                //}); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +52,18 @@ namespace ScheduleJob.Core
                 app.UseDeveloperExceptionPage();
             }
 
+            //启用中间件服务生成Swagger作为JSON终结点
+            app.UseSwagger();
+            //UI话
+            app.UseSwaggerUI(option =>
+            {
+                option.SwaggerEndpoint($"/swagger/{apiVersionNmae}/swagger.json", $"{apiVersionNmae} doc.");
+
+                option.RoutePrefix = "";
+                //option.HeadContent = "dsadasf";
+                //option.IndexStream = () => GetType().GetTypeInfo().Assembly.GetManifestResourceStream("xxx.html");//自定义模板
+            });
+           
             app.UseRouting();
 
             app.UseAuthorization();

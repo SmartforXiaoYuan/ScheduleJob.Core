@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ScheduleJob.Core</name>
+    </assembly>
+    <members>
+        <member name="T:ScheduleJob.Core.Controllers.WeatherForecastController">
+            <summary>
+            天气管理
+            </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.WeatherForecastController.Get">
+            <summary>
+            天气预报
+            </summary>
+            <returns>返回天气的数组</returns>
+        </member>
+        <member name="T:ScheduleJob.Core.WeatherForecast">
+            <summary>
+            天气实体
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.WeatherForecast.Date">
+            <summary>
+            日期
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.WeatherForecast.TemperatureC">
+            <summary>
+            温度
+            </summary>
+        </member>
+    </members>
+</doc>

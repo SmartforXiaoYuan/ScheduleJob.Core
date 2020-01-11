@@ -7,6 +7,9 @@ using Microsoft.Extensions.Logging;
 
 namespace ScheduleJob.Core.Controllers
 {
+    /// <summary>
+    /// 天气管理
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
@@ -23,6 +26,10 @@ namespace ScheduleJob.Core.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// 天气预报
+        /// </summary>
+        /// <returns>返回天气的数组</returns>
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
