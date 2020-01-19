@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ScheduleJob.Core.Extensions;
 
 namespace ScheduleJob.Core.Controllers
 {
@@ -31,6 +33,7 @@ namespace ScheduleJob.Core.Controllers
         /// </summary>
         /// <returns>返回天气的数组</returns>
         [HttpGet]
+        //[Authorize(Permissions.Name)]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();

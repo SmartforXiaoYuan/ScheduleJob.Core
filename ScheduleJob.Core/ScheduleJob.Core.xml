@@ -4,6 +4,238 @@
         <name>ScheduleJob.Core</name>
     </assembly>
     <members>
+        <member name="P:ScheduleJob.Core.AuthHelper.JwtSettings.Issuer">
+            <summary>
+            token是谁颁发的
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.JwtSettings.Audience">
+            <summary>
+            token可以给哪些客户端使用
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.JwtSettings.SecretKey">
+            <summary>
+            需要加密的key
+            </summary>
+        </member>
+        <member name="T:ScheduleJob.Core.AuthHelper.Policys.JwtToken">
+            <summary>
+            JWTToken生成类
+            </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.AuthHelper.Policys.JwtToken.BuildJwtToken(System.Security.Claims.Claim[],ScheduleJob.Core.AuthHelper.Policys.PermissionRequirement)">
+            <summary>
+            获取基于JWT的Token
+            </summary>
+            <param name="claims">需要在登陆的时候配置</param>
+            <param name="permissionRequirement">在startup中定义的参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:ScheduleJob.Core.AuthHelper.Policys.PermissionHandler">
+            <summary>
+            权限授权处理器
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.Policys.PermissionHandler.Schemes">
+            <summary>
+            验证方案提供对象
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.Policys.PermissionHandler.RoleModulePermissionServices">
+            <summary>
+            services 层注入
+            </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.AuthHelper.Policys.PermissionHandler.#ctor(Microsoft.AspNetCore.Authentication.IAuthenticationSchemeProvider,ScheduleJob.Core.IServices.IRoleModulePermissionServices,Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            构造函数注入
+            </summary>
+            <param name="schemes"></param>
+            <param name="roleModulePermissionServices"></param>
+            <param name="accessor"></param>
+        </member>
+        <member name="T:ScheduleJob.Core.AuthHelper.Policys.PermissionItem">
+            <summary>
+            用户或角色或其他凭据实体
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.Policys.PermissionItem.Role">
+            <summary>
+            用户或角色或其他凭据名称
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.Policys.PermissionItem.Url">
+            <summary>
+            请求Url
+            </summary>
+        </member>
+        <member name="T:ScheduleJob.Core.AuthHelper.Policys.PermissionRequirement">
+            <summary>
+            必要参数类，
+            继承 IAuthorizationRequirement，用于设计自定义权限处理器PermissionHandler
+            因为AuthorizationHandler 中的泛型参数 TRequirement 必须继承 IAuthorizationRequirement
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.Policys.PermissionRequirement.Permissions">
+            <summary>
+            用户权限集合
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.Policys.PermissionRequirement.DeniedAction">
+            <summary>
+            无权限action
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.Policys.PermissionRequirement.ClaimType">
+            <summary>
+            认证授权类型
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.Policys.PermissionRequirement.LoginPath">
+            <summary>
+            请求路径
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.Policys.PermissionRequirement.Issuer">
+            <summary>
+            发行人
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.Policys.PermissionRequirement.Audience">
+            <summary>
+            订阅人
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.Policys.PermissionRequirement.Expiration">
+            <summary>
+            过期时间
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.Policys.PermissionRequirement.SigningCredentials">
+            <summary>
+            签名验证
+            </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.AuthHelper.Policys.PermissionRequirement.#ctor(System.String,System.Collections.Generic.List{ScheduleJob.Core.AuthHelper.Policys.PermissionItem},System.String,System.String,System.String,Microsoft.IdentityModel.Tokens.SigningCredentials,System.TimeSpan)">
+            <summary>
+            构造
+            </summary>
+            <param name="deniedAction">拒约请求的url</param>
+            <param name="permissions">权限集合</param>
+            <param name="claimType">声明类型</param>
+            <param name="issuer">发行人</param>
+            <param name="audience">订阅人</param>
+            <param name="signingCredentials">签名验证实体</param>
+            <param name="expiration">过期时间</param>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.RoleController.Get(System.Int32,System.String)">
+            <summary>
+            获取全部角色
+            </summary>
+            <param name="page"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.RoleController.Post(ScheduleJob.Core.Contract.Models.Role)">
+            <summary>
+            添加角色
+            </summary>
+            <param name="role"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.RoleController.Put(ScheduleJob.Core.Contract.Models.Role)">
+            <summary>
+            更新角色
+            </summary>
+            <param name="role"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.RoleController.Delete(System.Int32)">
+            <summary>
+            删除角色
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.ScheduleController.Get(System.Int32,System.String)">
+            <summary>
+            获取全部用户
+            </summary>
+            <param name="page"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.TestController.Start">
+            <summary>
+            创建调度任务的入口
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.TestController.StartJob">
+            <summary>
+            创建调度任务的公共调用中心
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.TestController.Stop">
+            <summary>
+            停止调度器            
+            </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.TestController.CreateJob``1(System.String,System.String,System.String)">
+            <summary>
+            创建运行的调度器
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <param name="group"></param>
+            <param name="cronTime"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ScheduleJob.Core.Controllers.UserController">
+            <summary>
+            用户管理
+            </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.UserController.#ctor(ScheduleJob.Core.IRepository.UnitOfWork.IUnitOfWork,ScheduleJob.Core.IServices.IUserInfoServices,ScheduleJob.Core.IServices.IUserRoleServices,ScheduleJob.Core.IServices.IRoleServices)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="unitOfWork"></param>
+            <param name="sysUserInfoServices"></param>
+            <param name="userRoleServices"></param>
+            <param name="roleServices"></param>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.UserController.Get(System.Int32,System.String)">
+            <summary>
+            获取全部用户
+            </summary>
+            <param name="page"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.UserController.Post(ScheduleJob.Core.Contract.Models.UserInfo)">
+            <summary>
+            添加一个用户
+            </summary>
+            <param name="userInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.UserController.Put(ScheduleJob.Core.Contract.Models.UserInfo)">
+            <summary>
+            更新用户与角色
+            </summary>
+            <param name="userInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.UserController.Delete(System.Int32)">
+            <summary>
+            删除用户
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:ScheduleJob.Core.Controllers.WeatherForecastController">
             <summary>
             天气管理
@@ -14,6 +246,59 @@
             天气预报
             </summary>
             <returns>返回天气的数组</returns>
+        </member>
+        <member name="T:ScheduleJob.Core.Extensions.Permissions">
+            <summary>
+            权限变量配置
+            </summary>
+        </member>
+        <member name="T:ScheduleJob.Core.Extensions.DbSetup">
+            <summary>
+            Db 启动服务
+            </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.Extensions.IOCExtension.ServerExtension(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            服务层注入
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:ScheduleJob.Core.Extensions.IOCExtension.RepositotyExtension(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            仓储层注入
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:ScheduleJob.Core.Extensions.IOCExtension.CommonExtension(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            公共扩展注入
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:ScheduleJob.Core.Extensions.IOCExtension.JobExtension(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Job扩展注入
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:ScheduleJob.Core.Extensions.QuartzSetup">
+            <summary>
+            三大核心对象：
+            IScheduler：单元/实例
+            只有单元启动，里面的作业才能正常启动
+            IJob:任务，定时执行动作就是Job
+            ITrigger:定时策略
+            </summary>
+        </member>
+        <member name="T:ScheduleJob.Core.Extensions.ScheduledJobFactory">
+            <summary>
+            暂时没用到
+            </summary>
+        </member>
+        <member name="T:ScheduleJob.Core.Extensions.SqlsugarSetup">
+            <summary>
+            SqlSugar 启动服务
+            </summary>
         </member>
         <member name="T:ScheduleJob.Core.WeatherForecast">
             <summary>

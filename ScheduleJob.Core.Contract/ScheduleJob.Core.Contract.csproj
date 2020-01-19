@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -8,5 +8,20 @@
     <DocumentationFile>..\ScheduleJob.Core.Contract\ScheduleJob.Core.Contract.xml</DocumentationFile>
     <NoWarn>1701;1702;1591;</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="MSSQLEntity\" />
+    <Folder Include="MongoEntity\" />
+    <Folder Include="MySQLEntity\" />
+    <Folder Include="Request\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="sqlSugarCore" Version="5.0.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ScheduleJob.Core.Utility\ScheduleJob.Core.Utility.csproj" />
+  </ItemGroup>
 
 </Project>

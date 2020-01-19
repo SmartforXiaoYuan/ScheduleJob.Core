@@ -4,5 +4,430 @@
         <name>ScheduleJob.Core.Contract</name>
     </assembly>
     <members>
+        <member name="P:ScheduleJob.Core.Contract.BaseQuery.PageIndex">
+            <summary>
+            页码
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.Name">
+            <summary>
+            菜单名称
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.RoutePath">
+            <summary>
+            路由地址
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.ParentId">
+            <summary>
+            父ID 上级菜单ID
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.LinkUrl">
+            <summary>
+            菜单链接地址
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.OrderSort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.Description">
+            <summary>
+            /描述
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.IsMenu">
+            <summary>
+            是否是右侧菜单
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="T:ScheduleJob.Core.Contract.Models.ModuleApi">
+            <summary>
+            接口API地址信息表
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.Role.Name">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.Role.Description">
+             <summary>
+            描述
+             </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.UserInfo.Id">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.UserInfo.UserName">
+            <summary>
+            登录账号
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.UserInfo.UserPWD">
+            <summary>
+            登录密码
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.UserInfo.NickName">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.UserInfo.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.UserInfo.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.UserInfo.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.UserInfo.LastErrTime">
+             <summary>
+            最后登录时间 
+             </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.UserInfo.Status">
+            <summary>
+            状态Enabled
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.UserInfo.DataFlag">
+            是否有效(0无效,1有效) 
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.UserRole.Id">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.UserRole.UserId">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.UserRole.RoleId">
+            <summary>
+            角色ID
+            </summary>
+        </member>
+        <member name="T:ScheduleJob.Core.Contract.PageModel`1">
+            <summary>
+            通用分页信息类
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.PageModel`1.Page">
+            <summary>
+            当前页标
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.PageModel`1.PageCount">
+            <summary>
+            总页数
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.PageModel`1.TotalCount">
+            <summary>
+            数据总数
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.PageModel`1.PageSize">
+            <summary>
+            每页大小
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.PageModel`1.Models">
+            <summary>
+            返回数据
+            </summary>
+        </member>
+        <member name="T:ScheduleJob.Core.Contract.Response.BaseResponse">
+            <summary>
+            通用的Response
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Response.BaseResponse.Status">
+            <summary>
+            请求状态，catch异常时Status=false，由框架控制
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Response.BaseResponse.Code">
+            <summary>
+            业务错误代码，Status=true时前端会判断Code值(200=成功)
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Response.BaseResponse.Msg">
+            <summary>
+            程序/业务错误信息，发生错误的说明
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Response.BaseResponse.ServerInfo">
+            <summary>
+            接口的一些耗时，ip等信息
+            </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.Contract.Response.BaseResponse.SetResponseStatus(System.Boolean)">
+            <summary>
+            此方法由框架调用，开发过程中不要调用此方法
+            </summary>
+            <param name="st"></param>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Response.BaseResponse`1.Data">
+            <summary>
+            通用数据类型
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Response.JobResuleModel.IsSuccess">
+            <summary>
+            操作是否成功
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Response.JobResuleModel.Message">
+            <summary>
+            返回消息
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.RootEntity.CreatedDate">
+            <summary>
+            创建时间//   类型后面加问号代表可以为空
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.RootEntity.CreatedId">
+            <summary>
+            创建人ID
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.RootEntity.CreatedName">
+            <summary>
+            创建人姓名
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.RootEntity.UpdateDate">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.RootEntity.UpdateName">
+            <summary>
+            创建人姓名
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.RootEntity.UpdateId">
+            <summary>
+            修改人ID
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.RootEntity.IsDrop">
+            <summary>
+            删除标记
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.JobGroupApplication.GroupName">
+            <summary>
+            任务名称
+            </summary>
+        </member>
+        <member name="T:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity">
+            <summary>
+            任务计划表
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.Name">
+            <summary>
+            任务名称
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.JobGroupId">
+            <summary>
+            任务分组
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.JobGroup">
+            <summary>
+            任务分组
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.Cron">
+            <summary>
+            任务运行时间表达式
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.ApiUrl">
+            <summary>
+            url
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.Remark">
+            <summary>
+            任务描述
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.RunTimes">
+            <summary>
+            执行次数
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.BeginTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.LastRunTime">
+            <summary>
+            最后执行时间
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.IsStart">
+            <summary>
+            是否启动
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.RequestValue">
+            <summary>
+            请求体(仅POST有效)
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.MethodType">
+            <summary>
+            POST or GET
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.HandlerJobNum">
+            <summary>
+            负责人工号(不填默认是你,多个负责人间用半角分号隔开，比如：123456;11134)
+            </summary>
+        </member>
+        <member name="T:ScheduleJob.Core.Contract.Seed.DBSeed">
+            <summary>
+            简陋版本
+            </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.Contract.Seed.DBSeed.SeedAsync(ScheduleJob.Core.Contract.Seed.MyContext)">
+            <summary>
+            异步添加种子数据
+            </summary>
+            <param name="myContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Contract.Seed.MyContext.GetMainConnectionDb">
+            <summary>
+            连接字符串 
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Seed.MyContext.ConnectionString">
+            <summary>
+            连接字符串 
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Seed.MyContext.DbType">
+            <summary>
+            数据库类型 
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Seed.MyContext.Db">
+            <summary>
+            数据连接对象 
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Seed.MyContext.Context">
+            <summary>
+            数据库上下文实例（自动关闭连接）
+            </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.Contract.Seed.MyContext.#ctor">
+            <summary>
+            功能描述:构造函数
+            </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.Contract.Seed.MyContext.GetEntityDB``1">
+            <summary>
+            功能描述:获取数据库处理对象
+            </summary>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Contract.Seed.MyContext.GetEntityDB``1(SqlSugar.SqlSugarClient)">
+            <summary>
+            功能描述:获取数据库处理对象
+            </summary>
+            <param name="db">db</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Contract.Seed.MyContext.CreateTableByEntity``1(System.Boolean,``0[])">
+            <summary>
+            功能描述:根据实体类生成数据库表
+            </summary>
+            <param name="blnBackupTable">是否备份表</param>
+            <param name="lstEntitys">指定的实体</param>
+        </member>
+        <member name="M:ScheduleJob.Core.Contract.Seed.MyContext.CreateTableByEntity(System.Boolean,System.Type[])">
+            <summary>
+            功能描述:根据实体类生成数据库表
+            </summary>
+            <param name="blnBackupTable">是否备份表</param>
+            <param name="lstEntitys">指定的实体</param>
+        </member>
+        <member name="M:ScheduleJob.Core.Contract.Seed.MyContext.GetDbContext">
+            <summary>
+            功能描述:获得一个DbContext
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Contract.Seed.MyContext.Init(System.String,SqlSugar.DbType)">
+            <summary>
+            功能描述:设置初始化参数
+            </summary>
+            <param name="strConnectionString">连接字符串</param>
+            <param name="enmDbType">数据库类型</param>
+        </member>
+        <member name="M:ScheduleJob.Core.Contract.Seed.MyContext.GetConnectionConfig(System.Boolean,System.Boolean)">
+            <summary>
+            功能描述:创建一个链接配置
+            </summary>
+            <param name="blnIsAutoCloseConnection">是否自动关闭连接</param>
+            <param name="blnIsShardSameThread">是否夸类事务</param>
+            <returns>ConnectionConfig</returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Contract.Seed.MyContext.GetCustomDB(SqlSugar.ConnectionConfig)">
+            <summary>
+            功能描述:获取一个自定义的DB
+            </summary>
+            <param name="config">config</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Contract.Seed.MyContext.GetCustomEntityDB``1(SqlSugar.SqlSugarClient)">
+            <summary>
+            功能描述:获取一个自定义的数据库处理对象
+            </summary>
+            <param name="sugarClient">sugarClient</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Contract.Seed.MyContext.GetCustomEntityDB``1(SqlSugar.ConnectionConfig)">
+            <summary>
+            功能描述:获取一个自定义的数据库处理对象
+            </summary>
+            <param name="config">config</param>
+            <returns>返回值</returns>
+        </member>
     </members>
 </doc>
