@@ -16,7 +16,7 @@
         </member>
         <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.RoutePath">
             <summary>
-            路由地址
+            前端路由地址 
             </summary>
         </member>
         <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.ParentId">
@@ -24,9 +24,9 @@
             父ID 上级菜单ID
             </summary>
         </member>
-        <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.LinkUrl">
+        <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.ApiUrl">
             <summary>
-            菜单链接地址
+            API数据请求地址
             </summary>
         </member>
         <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.OrderSort">
@@ -428,6 +428,21 @@
             </summary>
             <param name="config">config</param>
             <returns>返回值</returns>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.VO.RouterBar.path">
+            <summary>
+            前端路由地址
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.VO.RouterBar.APIAddress">
+            <summary>
+            API路由地址
+            </summary>
+        </member>
+        <member name="T:ScheduleJob.Core.Contract.VO.NavigationBarMeta">
+            <summary>
+            定义一个Vue路由属性类
+            </summary>
         </member>
     </members>
 </doc>

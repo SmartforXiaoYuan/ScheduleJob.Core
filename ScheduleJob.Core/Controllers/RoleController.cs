@@ -11,6 +11,9 @@ using ScheduleJob.Core.IServices;
 
 namespace ScheduleJob.Core.Controllers
 {
+    /// <summary>
+    /// 角色
+    /// </summary>
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class RoleController : ControllerBase

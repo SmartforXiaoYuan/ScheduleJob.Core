@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 
 namespace ScheduleJob.Core.Services.QuartzCenter
 {
+    //一个Job可能会有多个Trigger。导致一个Job，同时执行。
+    [DisallowConcurrentExecution]
     public class HttpJob : IJob
     {
         //private readonly IConfiguration configuration;

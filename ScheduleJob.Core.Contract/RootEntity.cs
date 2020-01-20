@@ -39,6 +39,6 @@ namespace ScheduleJob.Core.Contract
         /// <summary>
         /// 删除标记
         /// </summary>
-        public bool? IsDrop { get; set; } = false;
+        public bool IsDrop { get; set; } = false;
     }
 }

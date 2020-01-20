@@ -1,4 +1,5 @@
 ﻿using ScheduleJob.Core.Contract.Models;
+using ScheduleJob.Core.Contract.ScheduleModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,14 +23,15 @@ namespace ScheduleJob.Core.Contract.Seed
             {
                 // 创建数据库
                 //myContext.Db.DbMaintenance.CreateDatabase();
-
                 // 创建表
                 myContext.CreateTableByEntity(false,
                     typeof(UserInfo),
                     typeof(UserRole),
                     typeof(Role),
                     typeof(ModuleApi),
-                    typeof(MenuInfo)
+                    typeof(MenuInfo),
+                    typeof(ScheduleEntity)
+                    
                     );
 
                 // 后期单独处理某些表

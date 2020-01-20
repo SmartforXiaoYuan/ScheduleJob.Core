@@ -76,6 +76,7 @@ namespace ScheduleJob.Core.Controllers
         /// 创建调度任务的公共调用中心
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public async Task StartJob()
         {
             //创建一个工厂
@@ -104,6 +105,7 @@ namespace ScheduleJob.Core.Controllers
         /// <summary>
         /// 停止调度器            
         /// </summary>
+        [HttpGet]
         public void Stop()
         {
             var sc=  CacheStatic.cache["1"];
@@ -119,6 +121,7 @@ namespace ScheduleJob.Core.Controllers
         /// <param name="group"></param>
         /// <param name="cronTime"></param>
         /// <returns></returns>
+        [HttpGet]
         public async Task CreateJob<T>(string name, string group, string cronTime) where T : IJob
         {
             //创建一个作业

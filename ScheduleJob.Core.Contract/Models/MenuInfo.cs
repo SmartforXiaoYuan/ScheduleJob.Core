@@ -14,7 +14,7 @@ namespace ScheduleJob.Core.Contract.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// 路由地址
+        /// 前端路由地址 
         /// </summary>
         public string RoutePath { get; set; }
 
@@ -25,10 +25,10 @@ namespace ScheduleJob.Core.Contract.Models
         public int? ParentId { get; set; }
 
         /// <summary>
-        /// 菜单链接地址
+        /// API数据请求地址
         /// </summary>
         [SugarColumn(ColumnDataType = "nvarchar", Length = 100, IsNullable = true)]
-        public string LinkUrl { get; set; }
+        public string ApiUrl { get; set; }
 
         /// <summary>
         /// 排序
@@ -50,12 +50,5 @@ namespace ScheduleJob.Core.Contract.Models
         [SugarColumn(ColumnDataType = "nvarchar", Length = 100, IsNullable = true)]
         public string Icon { get; set; }
 
-
- 
-  //`path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '链接地址',
-  // api_path 接口地址
-  //`component_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '-' COMMENT '组件名称',
-  //`create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建日期',
-  //`permission` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '权限',
     }
 }

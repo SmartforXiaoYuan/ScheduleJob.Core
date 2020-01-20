@@ -129,6 +129,40 @@
             <param name="signingCredentials">签名验证实体</param>
             <param name="expiration">过期时间</param>
         </member>
+        <member name="T:ScheduleJob.Core.Controllers.MenuController">
+            <summary>
+            菜单管理
+            </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.MenuController.Get">
+            <summary>
+            获取全部菜单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.MenuController.Post(ScheduleJob.Core.Contract.Models.MenuInfo)">
+            <summary>
+            添加一个菜单
+            </summary>
+            <param name="menuInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ScheduleJob.Core.Controllers.MenuTreeController">
+            <summary>
+            菜单树
+            </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.MenuTreeController.GetMenusTreeList(System.Int32)">
+            <summary>
+            获取菜单列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ScheduleJob.Core.Controllers.RoleController">
+            <summary>
+            角色
+            </summary>
+        </member>
         <member name="M:ScheduleJob.Core.Controllers.RoleController.Get(System.Int32,System.String)">
             <summary>
             获取全部角色
@@ -158,12 +192,51 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:ScheduleJob.Core.Controllers.ScheduleController">
+            <summary>
+            任务管理
+            </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.ScheduleController.Get">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:ScheduleJob.Core.Controllers.ScheduleController.Get(System.Int32,System.String)">
             <summary>
-            获取全部用户
+            获取分页
             </summary>
             <param name="page"></param>
             <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.ScheduleController.Post(ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity)">
+            <summary>
+            添加一个Job
+            </summary>
+            <param name="scheduleEntity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.ScheduleController.Put(ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity)">
+            <summary>
+            更新用户与角色
+            </summary>
+            <param name="scheduleEntity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.ScheduleController.StartJob(System.Int32)">
+            <summary>
+            启动计划任务
+            </summary>
+            <param name="JobId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.ScheduleController.StopJob(System.Int32)">
+            <summary>
+            停止一个计划任务
+            </summary>
+            <param name="jobId"></param>
             <returns></returns>
         </member>
         <member name="M:ScheduleJob.Core.Controllers.TestController.Start">
@@ -236,6 +309,11 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:ScheduleJob.Core.Controllers.UserRoleController">
+            <summary>
+            用户角色
+            </summary>
+        </member>
         <member name="T:ScheduleJob.Core.Controllers.WeatherForecastController">
             <summary>
             天气管理
@@ -286,7 +364,7 @@
             三大核心对象：
             IScheduler：单元/实例
             只有单元启动，里面的作业才能正常启动
-            IJob:任务，定时执行动作就是Job
+            IJob:任务，定时执行动作就是Job 默认无状态
             ITrigger:定时策略
             </summary>
         </member>

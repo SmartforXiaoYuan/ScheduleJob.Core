@@ -27,7 +27,8 @@ namespace ScheduleJob.Core.Extensions
             services.AddScoped<IUserInfoServices, UserInfoService>();
             services.AddScoped<IUserRoleServices, UserRoleService>();
             services.AddScoped<IRoleServices, RoleService>();
-         
+            services.AddScoped<ISchedulerService, SchedulerService>();
+            services.AddScoped<IMenuServices, MenuService>();
 
         }
         /// <summary>
@@ -40,6 +41,7 @@ namespace ScheduleJob.Core.Extensions
             services.AddScoped<IUserRoleRepository, UserRoleRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IScheduleRepositoty, ScheduleRepositoty>();
+            services.AddScoped<IMenuRepositoty, MenuRepositoty>();
         }
         /// <summary>
         /// 公共扩展注入
@@ -58,8 +60,8 @@ namespace ScheduleJob.Core.Extensions
         /// <param name="services"></param>
         public static void JobExtension(this IServiceCollection services)
         {
-            services.AddSingleton<ISchedulerService, SchedulerService>();
-            
+            services.AddQuartz(typeof(Services.QuartzCenter.HttpJob));
+            services.AddSingleton<ISchedulerCenter, SchedulerCenter>();
             //services.AddTransient<TestJobOne>();//Job使用瞬时依赖注入
         }
 

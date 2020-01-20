@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ScheduleJob.Core.Controllers
 {
+    /// <summary>
+    /// 用户角色
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class UserRoleController : ControllerBase

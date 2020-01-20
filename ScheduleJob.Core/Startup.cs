@@ -29,15 +29,14 @@ namespace ScheduleJob.Core
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
+            services.JobExtension();
             services.CommonExtension();
             services.AddSwaggerSetup();
             services.AddSqlsugarSetup();
             #region 接口控制反转依赖注入  -netcore自带方法
             services.ServerExtension();
             services.RepositotyExtension();
-
-            services.AddQuartz(typeof(Services.QuartzCenter.HttpJob));
+         
             #endregion
 
             //.AddNewtonsoftJson(options =>  //(默认小写)修改api返回的字段

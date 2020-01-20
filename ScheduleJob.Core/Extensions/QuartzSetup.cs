@@ -14,7 +14,7 @@ namespace ScheduleJob.Core.Extensions
     /// 三大核心对象：
     /// IScheduler：单元/实例
     /// 只有单元启动，里面的作业才能正常启动
-    /// IJob:任务，定时执行动作就是Job
+    /// IJob:任务，定时执行动作就是Job 默认无状态
     /// ITrigger:定时策略
     /// </summary>
     public static class QuartzSetup
