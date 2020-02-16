@@ -25,7 +25,7 @@
             </summary>
         </member>
         <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.ApiUrl">
-            <summary>
+            <summary> 
             API数据请求地址
             </summary>
         </member>
@@ -49,6 +49,16 @@
             图标
             </summary>
         </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.PidArr">
+            <summary>
+            编辑页面
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.hasChildren">
+            <summary>
+            hasChildren
+            </summary>
+        </member>
         <member name="T:ScheduleJob.Core.Contract.Models.ModuleApi">
             <summary>
             接口API地址信息表
@@ -63,6 +73,21 @@
              <summary>
             描述
              </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.Role.Enabled">
+            <summary>
+            删除标记
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.RoleModulePermission.RoleId">
+            <summary>
+            角色ID
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Models.RoleModulePermission.MenuId">
+            <summary>
+            菜单ID
+            </summary>
         </member>
         <member name="P:ScheduleJob.Core.Contract.Models.UserInfo.Id">
             <summary>
@@ -258,7 +283,7 @@
             任务分组
             </summary>
         </member>
-        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.JobGroup">
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.JobGroupName">
             <summary>
             任务分组
             </summary>
@@ -316,6 +341,11 @@
         <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.HandlerJobNum">
             <summary>
             负责人工号(不填默认是你,多个负责人间用半角分号隔开，比如：123456;11134)
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.ScheduleModels.ScheduleEntity.ErrorEmail">
+            <summary>
+            报警邮箱
             </summary>
         </member>
         <member name="T:ScheduleJob.Core.Contract.Seed.DBSeed">
@@ -428,21 +458,6 @@
             </summary>
             <param name="config">config</param>
             <returns>返回值</returns>
-        </member>
-        <member name="P:ScheduleJob.Core.Contract.VO.RouterBar.path">
-            <summary>
-            前端路由地址
-            </summary>
-        </member>
-        <member name="P:ScheduleJob.Core.Contract.VO.RouterBar.APIAddress">
-            <summary>
-            API路由地址
-            </summary>
-        </member>
-        <member name="T:ScheduleJob.Core.Contract.VO.NavigationBarMeta">
-            <summary>
-            定义一个Vue路由属性类
-            </summary>
         </member>
     </members>
 </doc>

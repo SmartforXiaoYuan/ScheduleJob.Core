@@ -18,5 +18,12 @@ namespace ScheduleJob.Core.Contract.Models
         /// </summary>
         [SugarColumn(ColumnDataType = "nvarchar", Length = 100, IsNullable = true)]
         public string Description { get; set; }
+        /// <summary>
+        /// 删除标记
+        /// </summary>
+        public bool Enabled { get; set; } = true;
+
+        [SugarColumn(IsIgnore = true)]
+        public List<int> MenuIds { get; set; }
     }
 }

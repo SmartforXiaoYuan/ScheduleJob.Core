@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ScheduleJob.Core.AuthHelper;
 using ScheduleJob.Core.Contract;
 using ScheduleJob.Core.Contract.Models;
 using ScheduleJob.Core.Contract.Response;
@@ -14,7 +15,7 @@ using ScheduleJob.Core.IServices;
 
 namespace ScheduleJob.Core.Controllers
 {
- 
+
     /// <summary>
     /// 用户管理
     /// </summary>
@@ -44,7 +45,34 @@ namespace ScheduleJob.Core.Controllers
             _userRoleServices = userRoleServices;
             _roleServices = roleServices;
         }
+        /// <summary>
+        /// 获取用户详情根据token
+        /// 【无权限】
+        /// </summary>
+        /// <param name="token">令牌</param>
+        /// <returns></returns>
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<BaseResponse<UserInfo>> GetInfoByToken(string token)
+        {
+            var data = new BaseResponse<UserInfo>();
+            if (!string.IsNullOrEmpty(token))
+            {
+                var tokenModel = JwtHelper.SerializeJwt(token);
+                if (tokenModel != null && tokenModel.Uid > 0)
+                {
+                    var userinfo = await _sysUserInfoServices.QueryById(tokenModel.Uid);
+                    if (userinfo != null)
+                    {
+                        data.Data = userinfo;
 
+                        data.Msg = "获取成功";
+                    }
+                }
+
+            }
+            return data;
+        }
 
         /// <summary>
         /// 获取全部用户
@@ -54,6 +82,7 @@ namespace ScheduleJob.Core.Controllers
         /// <returns></returns>
         // GET: api/User
         [HttpGet]
+        [Authorize(Permissions.Name)]
         public async Task<BaseResponse<PageModel<UserInfo>>> Get(int page = 1, string key = "")
         {
             if (string.IsNullOrEmpty(key) || string.IsNullOrWhiteSpace(key))
@@ -98,11 +127,13 @@ namespace ScheduleJob.Core.Controllers
         /// <returns></returns>
         // POST: api/User
         [HttpPost]
+        [AllowAnonymous]
         public async Task<BaseResponse<string>> Post(UserInfo userInfo)
         {
             var data = new BaseResponse<string>();
             //sysUserInfo.UserPWD = MD5Helper.MD5Encrypt32(sysUserInfo.uLoginPWD);
-          
+            userInfo.DataFlag = 1;
+            userInfo.Status = 1;
             var id = await _sysUserInfoServices.Add(userInfo);
             if (id > 0)
             {

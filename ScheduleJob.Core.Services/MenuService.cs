@@ -1,7 +1,8 @@
 ﻿using ScheduleJob.Core.Contract.Models;
-using ScheduleJob.Core.Contract.VO;
 using ScheduleJob.Core.IRepository;
 using ScheduleJob.Core.IServices;
+using ScheduleJob.Core.Services.BASE;
+using ScheduleJob.Core.Utility;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,12 +10,13 @@ using System.Threading.Tasks;
 
 namespace ScheduleJob.Core.Services
 {
-    public class MenuService : IMenuServices
+    public class MenuService :  BaseService<MenuInfo>, IMenuServices
     {
         IMenuRepositoty _menuRepositoty;
         public MenuService(IMenuRepositoty menuRepositoty)
         {
             _menuRepositoty = menuRepositoty;
+            base.BaseDal = menuRepositoty;
         }
 
         public async Task<bool> AddMenu(MenuInfo sysMenu)

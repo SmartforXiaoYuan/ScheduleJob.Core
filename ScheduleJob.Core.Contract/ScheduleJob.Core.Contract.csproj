@@ -14,6 +14,7 @@
     <Folder Include="MongoEntity\" />
     <Folder Include="MySQLEntity\" />
     <Folder Include="Request\" />
+    <Folder Include="VO\" />
   </ItemGroup>
 
   <ItemGroup>

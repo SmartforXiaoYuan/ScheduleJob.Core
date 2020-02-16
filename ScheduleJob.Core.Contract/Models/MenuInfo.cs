@@ -22,9 +22,9 @@ namespace ScheduleJob.Core.Contract.Models
         /// 父ID 上级菜单ID
         /// </summary>
         [SugarColumn(IsNullable = true)]
-        public int? ParentId { get; set; }
+        public int ParentId { get; set; }
 
-        /// <summary>
+        /// <summary> 
         /// API数据请求地址
         /// </summary>
         [SugarColumn(ColumnDataType = "nvarchar", Length = 100, IsNullable = true)]
@@ -50,5 +50,16 @@ namespace ScheduleJob.Core.Contract.Models
         [SugarColumn(ColumnDataType = "nvarchar", Length = 100, IsNullable = true)]
         public string Icon { get; set; }
 
+        /// <summary>
+        /// 编辑页面
+        /// </summary>
+        [SugarColumn(IsIgnore = true)]
+        public List<int> PidArr { get; set; }
+        //hasChildren: true
+        /// <summary>
+        /// hasChildren
+        /// </summary>
+        [SugarColumn(IsIgnore = true)]
+        public bool hasChildren { get; set; } = true;
     }
 }

@@ -20,7 +20,7 @@ namespace ScheduleJob.Core.Contract.ScheduleModels
         /// <summary>
         /// 任务分组
         /// </summary>
-        public string JobGroup { get; set; }
+        public string JobGroupName { get; set; }
         /// <summary>
         /// 任务运行时间表达式
         /// </summary>
@@ -41,16 +41,16 @@ namespace ScheduleJob.Core.Contract.ScheduleModels
         /// <summary>
         /// 开始时间
         /// </summary>
-        public DateTime? BeginTime { get; set; }
+        public DateTime? BeginTime { get; set; } = Convert.ToDateTime("1900-01-01");
         /// <summary>
         /// 结束时间
         /// </summary>
-        public DateTime? EndTime { get; set; }
+        public DateTime? EndTime { get; set; } = Convert.ToDateTime("1900-01-01");
 
         /// <summary>
         /// 最后执行时间
         /// </summary>
-        public DateTime? LastRunTime { get; set; }
+        public DateTime? LastRunTime { get; set; } = Convert.ToDateTime("1900-01-01");
         /// <summary>
         /// 是否启动
         /// </summary>
@@ -69,6 +69,11 @@ namespace ScheduleJob.Core.Contract.ScheduleModels
         /// 负责人工号(不填默认是你,多个负责人间用半角分号隔开，比如：123456;11134)
         /// </summary>
         public string HandlerJobNum { get; set; }
+
+        /// <summary>
+        /// 报警邮箱
+        /// </summary>
+        public string ErrorEmail { get; set; }
     }
  
 

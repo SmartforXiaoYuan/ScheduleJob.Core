@@ -36,6 +36,7 @@ namespace ScheduleJob.Core.Controllers
         //[Authorize(Permissions.Name)]
         public IEnumerable<WeatherForecast> Get()
         {
+            _logger.LogError("Weather Controller info Log");
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

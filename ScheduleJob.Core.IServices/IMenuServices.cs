@@ -1,5 +1,5 @@
 ﻿using ScheduleJob.Core.Contract.Models;
-using ScheduleJob.Core.Contract.VO;
+using ScheduleJob.Core.Utility;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +10,7 @@ namespace ScheduleJob.Core.IServices
     /// <summary>
     /// 菜单管理服务层接口定义
     /// </summary>
-    public interface IMenuServices
+    public interface IMenuServices : IBaseServices<MenuInfo>
     {
         /// <summary>
         /// 获取菜单列表，非树形

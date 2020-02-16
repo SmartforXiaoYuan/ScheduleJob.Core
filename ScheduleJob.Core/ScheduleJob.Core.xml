@@ -4,6 +4,39 @@
         <name>ScheduleJob.Core</name>
     </assembly>
     <members>
+        <member name="T:ScheduleJob.Core.AOP.SeriLogAOP">
+            <summary>
+            Castle代理
+            拦截器LogAOP 继承IInterceptor接口
+            </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.AuthHelper.JwtHelper.SerializeJwt(System.String)">
+            <summary>
+            解析
+            </summary>
+            <param name="jwtStr"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ScheduleJob.Core.AuthHelper.TokenModelJwt">
+            <summary>
+            令牌
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.TokenModelJwt.Uid">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.TokenModelJwt.Role">
+            <summary>
+            角色
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.AuthHelper.TokenModelJwt.Work">
+            <summary>
+            职能
+            </summary>
+        </member>
         <member name="P:ScheduleJob.Core.AuthHelper.JwtSettings.Issuer">
             <summary>
             token是谁颁发的
@@ -47,7 +80,7 @@
             services 层注入
             </summary>
         </member>
-        <member name="M:ScheduleJob.Core.AuthHelper.Policys.PermissionHandler.#ctor(Microsoft.AspNetCore.Authentication.IAuthenticationSchemeProvider,ScheduleJob.Core.IServices.IRoleModulePermissionServices,Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+        <member name="M:ScheduleJob.Core.AuthHelper.Policys.PermissionHandler.#ctor(Microsoft.AspNetCore.Authentication.IAuthenticationSchemeProvider,Microsoft.AspNetCore.Http.IHttpContextAccessor,ScheduleJob.Core.IServices.IRoleModuleService,ScheduleJob.Core.Utility.HttpContextUser.IUser)">
             <summary>
             构造函数注入
             </summary>
@@ -129,6 +162,21 @@
             <param name="signingCredentials">签名验证实体</param>
             <param name="expiration">过期时间</param>
         </member>
+        <member name="M:ScheduleJob.Core.Controllers.HealthController.Index">
+            <summary>
+            心跳检查
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.LoginController.#ctor(ScheduleJob.Core.IServices.IUserInfoServices,ScheduleJob.Core.IServices.IUserRoleServices,ScheduleJob.Core.IServices.IRoleServices,ScheduleJob.Core.AuthHelper.Policys.PermissionRequirement)">
+            <summary>
+            构造函数注入
+            </summary>
+            <param name="sysUserInfoServices"></param>
+            <param name="userRoleServices"></param>
+            <param name="roleServices"></param>
+            <param name="requirement"></param>
+        </member>
         <member name="T:ScheduleJob.Core.Controllers.MenuController">
             <summary>
             菜单管理
@@ -147,15 +195,51 @@
             <param name="menuInfo"></param>
             <returns></returns>
         </member>
+        <member name="M:ScheduleJob.Core.Controllers.MenuController.Put(ScheduleJob.Core.Contract.Models.MenuInfo)">
+            <summary>
+            更新菜单
+            </summary>
+            <param name="menuInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.MenuController.Delete(System.Int32)">
+            <summary>
+            删除菜单
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:ScheduleJob.Core.Controllers.MenuTreeController">
             <summary>
             菜单树
             </summary>
         </member>
+        <member name="M:ScheduleJob.Core.Controllers.MenuTreeController.GetTreeTable(System.Int32,System.String)">
+            <summary>
+            查询树形 Table
+            </summary>
+            <param name="f">父节点</param>
+            <param name="key">关键字</param>
+            <returns></returns>
+        </member>
         <member name="M:ScheduleJob.Core.Controllers.MenuTreeController.GetMenusTreeList(System.Int32)">
             <summary>
             获取菜单列表
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.MenuTreeController.GetNavigationBar(System.Int32)">
+            <summary>
+            获取路由树
+            </summary>
+            <param name="uid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.MenuTreeController.Assign(ScheduleJob.Core.Controllers.AssignView)">
+            <summary>
+            保存菜单权限分配
+            </summary>
+            <param name="assignView"></param>
             <returns></returns>
         </member>
         <member name="T:ScheduleJob.Core.Controllers.RoleController">
@@ -229,7 +313,7 @@
             <summary>
             启动计划任务
             </summary>
-            <param name="JobId"></param>
+            <param name="jobId"></param>
             <returns></returns>
         </member>
         <member name="M:ScheduleJob.Core.Controllers.ScheduleController.StopJob(System.Int32)">
@@ -280,6 +364,14 @@
             <param name="userRoleServices"></param>
             <param name="roleServices"></param>
         </member>
+        <member name="M:ScheduleJob.Core.Controllers.UserController.GetInfoByToken(System.String)">
+            <summary>
+            获取用户详情根据token
+            【无权限】
+            </summary>
+            <param name="token">令牌</param>
+            <returns></returns>
+        </member>
         <member name="M:ScheduleJob.Core.Controllers.UserController.Get(System.Int32,System.String)">
             <summary>
             获取全部用户
@@ -313,6 +405,14 @@
             <summary>
             用户角色
             </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.UserRoleController.#ctor(ScheduleJob.Core.IServices.IUserInfoServices,ScheduleJob.Core.IServices.IUserRoleServices,ScheduleJob.Core.IServices.IRoleServices)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="sysUserInfoServices"></param>
+            <param name="userRoleServices"></param>
+            <param name="roleServices"></param>
         </member>
         <member name="T:ScheduleJob.Core.Controllers.WeatherForecastController">
             <summary>
@@ -377,6 +477,24 @@
             <summary>
             SqlSugar 启动服务
             </summary>
+        </member>
+        <member name="T:ScheduleJob.Core.Middlewares.ErrorHandlingMiddleware">
+            <summary>
+            错误处理中间件
+            </summary>
+        </member>
+        <member name="M:ScheduleJob.Core.Middlewares.ErrorHandlingMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            错误处理的构造函数
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:ScheduleJob.Core.Middlewares.ErrorHandlingMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            执行
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
         </member>
         <member name="T:ScheduleJob.Core.WeatherForecast">
             <summary>

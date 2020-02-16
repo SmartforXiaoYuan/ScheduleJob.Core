@@ -30,7 +30,8 @@ namespace ScheduleJob.Core.Contract.Seed
                     typeof(Role),
                     typeof(ModuleApi),
                     typeof(MenuInfo),
-                    typeof(ScheduleEntity)
+                    typeof(ScheduleEntity),
+                     typeof(RoleModulePermission)
                     
                     );
 

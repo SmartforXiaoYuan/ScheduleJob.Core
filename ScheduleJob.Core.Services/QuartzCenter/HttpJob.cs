@@ -4,9 +4,11 @@ using Quartz;
 using Quartz.Impl;
 using Quartz.Impl.Triggers;
 using ScheduleJob.Core.Contract.ScheduleModels;
+using ScheduleJob.Core.IServices.QuartzCenter;
 using ScheduleJob.Core.Utility;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,23 +20,28 @@ namespace ScheduleJob.Core.Services.QuartzCenter
     {
         //private readonly IConfiguration configuration;
         //private readonly ILogger<HttpJob> logger;
-        public HttpJob()
+        ISchedulerService _schedulerService;
+        public HttpJob(ISchedulerService schedulerService)
         {
             //this.logger = logger;
             //this.configuration = configuration;
+            _schedulerService = schedulerService;
         }
         public async Task Execute(IJobExecutionContext context)
         {
             //this.logger.LogWarning($"Hello from scheduled task {DateTime.Now.ToLongTimeString()}");
             //await Task.CompletedTask;
-            ScheduleEntity sysScheduleModel = new ScheduleEntity();
+           
+            ScheduleEntity taskOptions =await GetTaskOptionsAsync(context);
             AbstractTrigger trigger = (context as JobExecutionContextImpl).Trigger as AbstractTrigger;
-            if (sysScheduleModel == null)
+
+
+            if (taskOptions == null)
             {
                 //"未到找作业或可能被移除"
                 await Task.CompletedTask;
             }
-            if (string.IsNullOrEmpty(sysScheduleModel.ApiUrl) || sysScheduleModel.ApiUrl == "/")
+            if (string.IsNullOrEmpty(taskOptions.ApiUrl) || taskOptions.ApiUrl == "/")
             {
                 //"未配置url"
                 await Task.CompletedTask;
@@ -46,14 +53,28 @@ namespace ScheduleJob.Core.Services.QuartzCenter
             //    header.Add(sysScheduleModel.AuthKey.Trim(), taskOptions.AuthValue.Trim());
             //}
 
-            if (sysScheduleModel.MethodType?.ToUpper() == "GET")
+            if (taskOptions.MethodType?.ToUpper() == "GET")
             {
-                await HttpUtil.HttpGetAsync(sysScheduleModel.ApiUrl, header);
+                await HttpUtil.HttpGetAsync(taskOptions.ApiUrl, header);
             }
             else
             {
-                await HttpUtil.HttpPostAsync(sysScheduleModel.ApiUrl, null, null, 30000, header);
+                await HttpUtil.HttpPostAsync(taskOptions.ApiUrl, null, null, 30000, header);
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context">通过作业上下文获取作业对应的配置参数</param>
+        /// <returns></returns>
+        public async Task<ScheduleEntity> GetTaskOptionsAsync(IJobExecutionContext context)
+        {
+            var _taskList = await _schedulerService.GetAllScheduleNotIsDrop();
+            AbstractTrigger trigger = (context as JobExecutionContextImpl).Trigger as AbstractTrigger;
+            ScheduleEntity taskOptions = _taskList.Where(x => x.Id.ToString() == trigger.Name && x.JobGroupName == trigger.Group).FirstOrDefault();
+            return taskOptions ?? _taskList.Where(x => x.Name == trigger.JobName && x.JobGroupName == trigger.JobGroup).FirstOrDefault();
+        }
     }
+
 }

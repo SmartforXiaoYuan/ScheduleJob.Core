@@ -8,6 +8,7 @@ using ScheduleJob.Core.Contract;
 using ScheduleJob.Core.Contract.Response;
 using ScheduleJob.Core.Contract.ScheduleModels;
 using ScheduleJob.Core.IServices.QuartzCenter;
+using ScheduleJob.Core.Utility.HttpContextUser;
 
 namespace ScheduleJob.Core.Controllers
 {
@@ -18,10 +19,11 @@ namespace ScheduleJob.Core.Controllers
     [ApiController]
     public class ScheduleController : ControllerBase
     {
-        ISchedulerService _schedulerService;
-        public ScheduleController(ISchedulerService schedulerService)
+        ISchedulerService _schedulerService; readonly IUser _user;
+        public ScheduleController(ISchedulerService schedulerService, IUser user)
         {
             _schedulerService = schedulerService;
+            _user = user;
         }
 
         /// <summary>
@@ -70,10 +72,21 @@ namespace ScheduleJob.Core.Controllers
         public async Task<BaseResponse<string>> Post(ScheduleEntity scheduleEntity)
         {
             var data = new BaseResponse<string>();
-            var success = await _schedulerService.AddScheduleAsync(scheduleEntity);
-            if (success)
+            try
             {
-                data.Msg = "添加成功";
+                scheduleEntity.CreatedId = _user.ID;
+                scheduleEntity.CreatedName = _user.Name;
+                scheduleEntity.UpdateName = scheduleEntity.CreatedName;
+                scheduleEntity.UpdateId = scheduleEntity.CreatedId;
+                var success = await _schedulerService.AddScheduleAsync(scheduleEntity);
+                if (success)
+                {
+                    data.Msg = "添加成功";
+                }
+            }
+            catch (Exception ex )
+            {
+
             }
             return data;
         }
@@ -100,7 +113,7 @@ namespace ScheduleJob.Core.Controllers
         /// <summary>
         /// 启动计划任务
         /// </summary>
-        /// <param name="JobId"></param>
+        /// <param name="jobId"></param>
         /// <returns></returns>
         [Route("StartJob")]
         [HttpGet]

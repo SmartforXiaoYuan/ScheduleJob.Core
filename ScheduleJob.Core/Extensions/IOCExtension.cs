@@ -29,6 +29,8 @@ namespace ScheduleJob.Core.Extensions
             services.AddScoped<IRoleServices, RoleService>();
             services.AddScoped<ISchedulerService, SchedulerService>();
             services.AddScoped<IMenuServices, MenuService>();
+            services.AddScoped<IRoleModuleService, RoleModuleService>();
+            
 
         }
         /// <summary>
@@ -42,6 +44,8 @@ namespace ScheduleJob.Core.Extensions
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IScheduleRepositoty, ScheduleRepositoty>();
             services.AddScoped<IMenuRepositoty, MenuRepositoty>();
+            services.AddScoped<IRoleModuleRepository, RoleModuleRepository>();
+
         }
         /// <summary>
         /// 公共扩展注入

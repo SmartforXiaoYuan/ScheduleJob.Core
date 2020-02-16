@@ -12,11 +12,11 @@ namespace ScheduleJob.Core.Contract
         /// <summary>
         /// 创建时间//   类型后面加问号代表可以为空
         /// </summary>
-        public DateTime? CreatedDate { get; set; } = DateTime.Now;
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
         /// <summary>
         /// 创建人ID
         /// </summary>
-        public long? CreatedId { get; set; }
+        public long CreatedId { get; set; }
 
         /// <summary>
         /// 创建人姓名
@@ -26,7 +26,7 @@ namespace ScheduleJob.Core.Contract
         /// <summary>
         /// 修改时间
         /// </summary>
-        public DateTime? UpdateDate { get; set; }
+        public DateTime UpdateDate { get; set; } = DateTime.Now;
         /// <summary>
         /// 创建人姓名
         /// </summary>

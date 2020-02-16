@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace ScheduleJob.Core.IServices
 {
-    /// <summary>
-    /// RoleModulePermissionServices
-    /// </summary>	
-    public interface IRoleModulePermissionServices  
+   public interface IRoleModuleService : IBaseServices<RoleModulePermission>
     {
-
         Task<List<RoleModulePermission>> GetRoleModule();
         Task<List<RoleModulePermission>> TestModelWithChildren();
-        
     }
 }

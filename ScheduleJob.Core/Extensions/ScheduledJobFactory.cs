@@ -1,4 +1,5 @@
-﻿using Quartz;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Quartz;
 using Quartz.Spi;
 using System;
 using System.Collections.Generic;
@@ -12,17 +13,21 @@ namespace ScheduleJob.Core.Extensions
     /// </summary>
     public class ScheduledJobFactory : IJobFactory
     {
-        private readonly IServiceProvider serviceProvider;
+        private readonly IServiceProvider _serviceProvider;
 
         public ScheduledJobFactory(IServiceProvider serviceProvider)
         {
-            this.serviceProvider = serviceProvider;
+            this._serviceProvider = serviceProvider;
         }
 
         public IJob NewJob(TriggerFiredBundle bundle, IScheduler scheduler)
         {
-            return serviceProvider.GetService(typeof(IJob)) as IJob;
-        }
+            var serviceScope = _serviceProvider.CreateScope();
+            var job = serviceScope.ServiceProvider.GetService(typeof(IJob)) as IJob;
+            var ss =serviceScope.ServiceProvider.GetService(typeof(Services.QuartzCenter.HttpJob)) as IJob; 
+            return job;
+            //return _serviceProvider.GetService(typeof(IJob)) as IJob;
+         }
 
         public void ReturnJob(IJob job)
         {

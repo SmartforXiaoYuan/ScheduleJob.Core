@@ -27,6 +27,7 @@ namespace ScheduleJob.Core.Services.QuartzCenter
         {
             _scheduleRepositoty = scheduleRepositoty;
             _schedulerCenter = schedulerCenter;
+            base.BaseDal = scheduleRepositoty;
         }
 
         
@@ -55,14 +56,14 @@ namespace ScheduleJob.Core.Services.QuartzCenter
             sysSchedule.UpdateDate = DateTime.Now;
             //需要考虑一下 POST参数、时间策略 需要先停止然后再启动
             var isNeedStop =await IsNeedStopIJobAsync(sysSchedule);
-            if (isNeedStop)
-            {
-                await StopJob(sysSchedule.Id);
-            }
-            if(sysSchedule.IsStart&& !sysSchedule.IsDrop)
-            {
-                await StartJob(sysSchedule.Id);
-            }
+            //if (isNeedStop)
+            //{
+            //    await StopJob(sysSchedule.Id);
+            //}
+            //if(sysSchedule.IsStart&& !sysSchedule.IsDrop)
+            //{
+            //    await StartJob(sysSchedule.Id);
+            //}
             return await Update(sysSchedule);
         }      
 

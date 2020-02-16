@@ -19,11 +19,12 @@ namespace ScheduleJob.Core.Controllers
     public class RoleController : ControllerBase
     {
         readonly IRoleServices _roleServices;
-   
-        public RoleController(IRoleServices roleServices)
+        IRoleModuleService _roleModuleServive;
+        public RoleController(IRoleServices roleServices, IRoleModuleService roleModuleServive)
         {
             _roleServices = roleServices;
             //_user = user;
+            _roleModuleServive = roleModuleServive;
         }
         /// <summary>
         /// 获取全部角色
@@ -40,7 +41,11 @@ namespace ScheduleJob.Core.Controllers
                 key = "";
             }
             int intPageSize = 50;
-            var data = await _roleServices.QueryPage(a => a.IsDrop == true && (a.Name != null && a.Name.Contains(key)), page, intPageSize, " Id desc ");
+            var data = await _roleServices.QueryPage(a => a.IsDrop == false && (a.Name != null && a.Name.Contains(key)), page, intPageSize, " Id desc ");
+            data.Models.ForEach(x =>
+            {
+                x.MenuIds = _roleModuleServive.Query(d => d.RoleId == x.Id).Result.Select(a => a.MenuId).ToList();
+            });
             return new BaseResponse<PageModel<Role>>()
             {
                 Data = data
@@ -57,7 +62,6 @@ namespace ScheduleJob.Core.Controllers
         public async Task<BaseResponse<string>> Post(Role role)
         {
             var data = new BaseResponse<string>();
-
             //role.CreateId = _user.ID;
             //role.CreateBy = _user.Name;
             //role.CreateBy = "yyj";
@@ -66,7 +70,8 @@ namespace ScheduleJob.Core.Controllers
             //role.Description = "admin的权限";
             //role.CreateId = 0;
             //role.CreateTime = DateTime.Now;
-
+            role.UpdateName = role.CreatedName;
+            role.UpdateId = role.CreatedId;
             var id = await _roleServices.Add(role);
             if (id > 0)
             {

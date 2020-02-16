@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using ScheduleJob.Core.IServices;
+using ScheduleJob.Core.Utility.HttpContextUser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,13 +24,16 @@ namespace ScheduleJob.Core.AuthHelper.Policys
         public IAuthenticationSchemeProvider Schemes { get; set; }
         private readonly IHttpContextAccessor _accessor;
 
-
+        readonly IRoleModuleService _roleModuleService;
+        readonly IUserRoleServices _userRoleServices;
+    
+        readonly IUser _user;
         /// <summary>
         /// services 层注入
         /// </summary>
-        public IRoleModulePermissionServices RoleModulePermissionServices { get; set; }
+        public IRoleModuleService RoleModulePermissionServices { get; set; }
 
- 
+
 
         /// <summary>
         /// 构造函数注入
@@ -37,11 +41,12 @@ namespace ScheduleJob.Core.AuthHelper.Policys
         /// <param name="schemes"></param>
         /// <param name="roleModulePermissionServices"></param>
         /// <param name="accessor"></param>
-        public PermissionHandler(IAuthenticationSchemeProvider schemes, IRoleModulePermissionServices roleModulePermissionServices, IHttpContextAccessor accessor)
+        public PermissionHandler(IAuthenticationSchemeProvider schemes, IHttpContextAccessor accessor, IRoleModuleService roleModuleService, IUser user)
         {
             _accessor = accessor;
             Schemes = schemes;
-            this.RoleModulePermissionServices = roleModulePermissionServices;
+            _roleModuleService = roleModuleService;
+            _user = user;
         }
 
         // 重写异步处理程序
@@ -57,9 +62,10 @@ namespace ScheduleJob.Core.AuthHelper.Policys
              */
 
             // 将最新的角色和接口列表更新
-            var data = await RoleModulePermissionServices.GetRoleModule();
+            var data = await _roleModuleService.GetRoleModule();
+          
             var list = (from item in data
-                        
+
                         orderby item.Id
                         select new PermissionItem
                         {
@@ -104,8 +110,8 @@ namespace ScheduleJob.Core.AuthHelper.Policys
                         httpContext.User = result.Principal;
 
                         //权限中是否存在请求的url
-                        //if (requirement.Permissions.GroupBy(g => g.Url).Where(w => w.Key?.ToLower() == questUrl).Count() > 0)
-                        //if (isMatchUrl)
+                        //验证权限临时判断  需要加上按钮管理才能控制
+                      
                         if (true)
                         {
                             // 获取当前用户的角色信息
@@ -130,13 +136,12 @@ namespace ScheduleJob.Core.AuthHelper.Policys
                                     // ignored
                                 }
                             }
-
                             //验证权限
-                            //if (currentUserRoles.Count <= 0 || requirement.Permissions.Where(w => currentUserRoles.Contains(w.Role) && w.Url.ToLower() == questUrl).Count() <= 0)
                             if (currentUserRoles.Count <= 0 || !isMatchRole)
                             {
-                                context.Fail();
-                                return;
+                                context.Succeed(requirement); //测试验证权限临时通过 需要加上按钮管理才能控制
+                                //context.Fail();
+                                //return;
                             }
                         }
 

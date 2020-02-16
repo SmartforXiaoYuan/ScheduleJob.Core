@@ -116,7 +116,7 @@ namespace ScheduleJob.Core.Services.QuartzCenter
             {
                 if (scheduleEntity != null&& scheduleEntity.Id>0)
                 {
-                    JobKey jobKey = new JobKey(scheduleEntity.Id.ToString(), scheduleEntity.JobGroup);
+                    JobKey jobKey = new JobKey(scheduleEntity.Id.ToString(), scheduleEntity.JobGroupName);
                     if (await _quartzScheduler.CheckExists(jobKey))
                     {
                         result.IsSuccess = false;
@@ -124,15 +124,17 @@ namespace ScheduleJob.Core.Services.QuartzCenter
                         return result;
                     }
                     #region 设置开始时间和结束时间
-                    if (scheduleEntity.BeginTime == null)
-                    {
-                        scheduleEntity.BeginTime = DateTime.Now;
-                    }
+                    //if (scheduleEntity.BeginTime == null)
+                    //{
+                    //    scheduleEntity.BeginTime = DateTime.Now;
+                    //}
+                    scheduleEntity.BeginTime = DateTime.Now;
                     DateTimeOffset starRunTime = DateBuilder.NextGivenSecondDate(scheduleEntity.BeginTime, 1);//设置开始时间
-                    if (scheduleEntity.EndTime == null)
-                    {
-                        scheduleEntity.EndTime = DateTime.MaxValue.AddDays(-1);
-                    }
+                    scheduleEntity.EndTime = DateTime.MaxValue.AddDays(-1);
+                    //if (scheduleEntity.EndTime == null)
+                    //{
+                    //    scheduleEntity.EndTime = DateTime.MaxValue.AddDays(-1);
+                    //}
                     DateTimeOffset endRunTime = DateBuilder.NextGivenSecondDate(scheduleEntity.EndTime, 1);//设置暂停时间
                     #endregion
  
@@ -145,7 +147,7 @@ namespace ScheduleJob.Core.Services.QuartzCenter
                     //IJobDetail job = new JobDetailImpl(sysSchedule.Id.ToString(), sysSchedule.JobGroup, jobType);
                     #region 泛型传递
                     IJobDetail job = JobBuilder.Create<HttpJob>()
-                        .WithIdentity(scheduleEntity.Name, scheduleEntity.JobGroup)
+                        .WithIdentity(scheduleEntity.Id.ToString(), scheduleEntity.JobGroupName)//需要和CreateCronTrigger中的forJob对应
                         .Build();
                     #endregion
                     ITrigger trigger = CreateCronTrigger(scheduleEntity);
@@ -186,7 +188,7 @@ namespace ScheduleJob.Core.Services.QuartzCenter
         {
             var result = new JobResuleModel();
             result.IsSuccess = false;
-            JobKey jobKey = new JobKey(scheduleEntity.Id.ToString(), scheduleEntity.JobGroup);
+            JobKey jobKey = new JobKey(scheduleEntity.Id.ToString(), scheduleEntity.JobGroupName);
             if (await _quartzScheduler.CheckExists(jobKey))
             {
                 result.IsSuccess = true;
@@ -206,11 +208,11 @@ namespace ScheduleJob.Core.Services.QuartzCenter
         {
             // 作业触发器
             return TriggerBuilder.Create()
-                   .WithIdentity(sysSchedule.Id.ToString(), sysSchedule.JobGroup)
+                   .WithIdentity(sysSchedule.Id.ToString(), sysSchedule.JobGroupName)
                    .StartAt(sysSchedule.BeginTime.Value)//开始时间
                    .EndAt(sysSchedule.EndTime.Value)//结束数据
                    .WithCronSchedule(sysSchedule.Cron)//指定cron表达式
-                   .ForJob(sysSchedule.Id.ToString(), sysSchedule.JobGroup)//作业名称
+                   .ForJob(sysSchedule.Id.ToString(), sysSchedule.JobGroupName)//作业名称
                    .Build();
         }
 
