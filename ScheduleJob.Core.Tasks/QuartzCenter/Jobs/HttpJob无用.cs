@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+﻿
 using Quartz;
 using Quartz.Impl;
 using Quartz.Impl.Triggers;
@@ -27,7 +26,7 @@ namespace ScheduleJob.Core.Services.QuartzCenter
             //this.configuration = configuration;
             _schedulerService = schedulerService;
         }
-        public async Task Execute(IJobExecutionContext context)
+        public async System.Threading.Tasks.Task Execute(IJobExecutionContext context)
         {
             //this.logger.LogWarning($"Hello from scheduled task {DateTime.Now.ToLongTimeString()}");
             //await Task.CompletedTask;
@@ -39,12 +38,12 @@ namespace ScheduleJob.Core.Services.QuartzCenter
             if (taskOptions == null)
             {
                 //"未到找作业或可能被移除"
-                await Task.CompletedTask;
+                await System.Threading.Tasks.Task.CompletedTask;
             }
             if (string.IsNullOrEmpty(taskOptions.ApiUrl) || taskOptions.ApiUrl == "/")
             {
                 //"未配置url"
-                await Task.CompletedTask;
+                await System.Threading.Tasks.Task.CompletedTask;
             }
             Dictionary<string, string> header = new Dictionary<string, string>();
             //if (!string.IsNullOrEmpty(sysScheduleModel.AuthKey)
@@ -75,6 +74,8 @@ namespace ScheduleJob.Core.Services.QuartzCenter
             ScheduleEntity taskOptions = _taskList.Where(x => x.Id.ToString() == trigger.Name && x.JobGroupName == trigger.Group).FirstOrDefault();
             return taskOptions ?? _taskList.Where(x => x.Name == trigger.JobName && x.JobGroupName == trigger.JobGroup).FirstOrDefault();
         }
+
+     
     }
 
 }

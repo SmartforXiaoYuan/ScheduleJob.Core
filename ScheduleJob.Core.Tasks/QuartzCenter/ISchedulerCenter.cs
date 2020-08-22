@@ -1,4 +1,5 @@
 ﻿using Quartz;
+using ScheduleJob.Core.Contract;
 using ScheduleJob.Core.Contract.Response;
 using ScheduleJob.Core.Contract.ScheduleModels;
 using System;
@@ -13,31 +14,35 @@ namespace ScheduleJob.Core.Services.QuartzCenter
     /// </summary>
     public interface ISchedulerCenter
     {
-        Task<SchedulerMetaData> GetSchedulerInfo();
+
         /// <summary>
         /// 开启任务调度
         /// </summary>
         /// <returns></returns>
-        Task<JobResuleModel> StartScheduleAsync();
-
+        Task<MessageModel<string>> StartScheduleAsync();
         /// <summary>
-        /// 关闭，关机。并清理关联的资源。（停止任务调度）
+        /// 停止任务调度
         /// </summary>
         /// <returns></returns>
-        Task<JobResuleModel> SchedulerShutdownAsync();
-
+        Task<MessageModel<string>> StopScheduleAsync();
         /// <summary>
-        /// 持久化
+        /// 
         /// </summary>
-        /// <param name="scheduleEntity"></param>
+        /// <param name="sysSchedule"></param>
         /// <returns></returns>
-        Task<JobResuleModel> AddScheduleJobAsync(ScheduleEntity scheduleEntity);
+        Task<MessageModel<string>> AddScheduleJobAsync(TasksQz sysSchedule);
         /// <summary>
-        /// 删除任务
+        /// 停止一个任务
         /// </summary>
-        /// <param name="scheduleEntity"></param>
+        /// <param name="sysSchedule"></param>
         /// <returns></returns>
-        Task<JobResuleModel> DelJobAsync(ScheduleEntity scheduleEntity);
+        Task<MessageModel<string>> StopScheduleJobAsync(TasksQz sysSchedule);
+        /// <summary>
+        /// 恢复一个任务
+        /// </summary>
+        /// <param name="sysSchedule"></param>
+        /// <returns></returns>
+        Task<MessageModel<string>> ResumeJob(TasksQz sysSchedule);
 
     }
 }

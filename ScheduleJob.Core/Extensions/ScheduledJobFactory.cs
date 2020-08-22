@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace ScheduleJob.Core.Extensions
 {
     /// <summary>
-    /// 暂时没用到
+    /// 暂时没用到（废弃）
     /// </summary>
     public class ScheduledJobFactory : IJobFactory
     {
@@ -24,7 +24,7 @@ namespace ScheduleJob.Core.Extensions
         {
             var serviceScope = _serviceProvider.CreateScope();
             var job = serviceScope.ServiceProvider.GetService(typeof(IJob)) as IJob;
-            var ss =serviceScope.ServiceProvider.GetService(typeof(Services.QuartzCenter.HttpJob)) as IJob; 
+            //var ss =serviceScope.ServiceProvider.GetService(typeof(Services.QuartzCenter.HttpJob)) as IJob; 
             return job;
             //return _serviceProvider.GetService(typeof(IJob)) as IJob;
          }

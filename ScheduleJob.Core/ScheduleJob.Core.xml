@@ -323,6 +323,49 @@
             <param name="jobId"></param>
             <returns></returns>
         </member>
+        <member name="M:ScheduleJob.Core.Controllers.TasksQzController.Get(System.Int32,System.String)">
+            <summary>
+            分页获取
+            </summary>
+            <param name="page"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.TasksQzController.Post(ScheduleJob.Core.Contract.Dtos.TasksQzInputDto)">
+            <summary>
+            添加计划任务（暂不支持url）
+            </summary>
+            <param name="tasksQz"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.TasksQzController.Put(ScheduleJob.Core.Contract.TasksQz)">
+            <summary>
+            修改计划任务
+            </summary>
+            <param name="tasksQz"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.TasksQzController.StartJob(System.Int32)">
+            <summary>
+            启动计划任务
+            </summary>
+            <param name="jobId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.TasksQzController.StopJob(System.Int32)">
+            <summary>
+            停止一个计划任务
+            </summary>
+            <param name="jobId"></param>
+            <returns></returns>        
+        </member>
+        <member name="M:ScheduleJob.Core.Controllers.TasksQzController.ReCovery(System.Int32)">
+            <summary>
+            重启一个计划任务
+            </summary>
+            <param name="jobId"></param>
+            <returns></returns>
+        </member>
         <member name="M:ScheduleJob.Core.Controllers.TestController.Start">
             <summary>
             创建调度任务的入口
@@ -470,7 +513,7 @@
         </member>
         <member name="T:ScheduleJob.Core.Extensions.ScheduledJobFactory">
             <summary>
-            暂时没用到
+            暂时没用到（废弃）
             </summary>
         </member>
         <member name="T:ScheduleJob.Core.Extensions.SqlsugarSetup">

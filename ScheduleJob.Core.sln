@@ -5,17 +5,19 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleJob.Core", "ScheduleJob.Core\ScheduleJob.Core.csproj", "{CE452B26-A828-469A-A6BD-C58991CA0CAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleJob.Core.Contract", "ScheduleJob.Core.Contract\ScheduleJob.Core.Contract.csproj", "{D2EC2527-CAFE-450C-AB4D-B8270B7DF82B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleJob.Core.Contract", "ScheduleJob.Core.Contract\ScheduleJob.Core.Contract.csproj", "{D2EC2527-CAFE-450C-AB4D-B8270B7DF82B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleJob.Core.Services", "ScheduleJob.Core.Services\ScheduleJob.Core.Services.csproj", "{76661BBE-4C66-4D70-BAC5-9360B4AE195A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleJob.Core.Services", "ScheduleJob.Core.Services\ScheduleJob.Core.Services.csproj", "{76661BBE-4C66-4D70-BAC5-9360B4AE195A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleJob.Core.IRepository", "ScheduleJob.Core.IRepository\ScheduleJob.Core.IRepository.csproj", "{FD216C85-B51A-4D2B-B439-8416C7BE0DA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleJob.Core.IRepository", "ScheduleJob.Core.IRepository\ScheduleJob.Core.IRepository.csproj", "{FD216C85-B51A-4D2B-B439-8416C7BE0DA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleJob.Core.Repository", "ScheduleJob.Core.Repository\ScheduleJob.Core.Repository.csproj", "{41B74B45-728E-4AE9-B8F6-DB071EFCF09B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleJob.Core.Repository", "ScheduleJob.Core.Repository\ScheduleJob.Core.Repository.csproj", "{41B74B45-728E-4AE9-B8F6-DB071EFCF09B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleJob.Core.IServices", "ScheduleJob.Core.IServices\ScheduleJob.Core.IServices.csproj", "{43CD595D-3E2A-4DE7-A878-64FB0D85E426}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleJob.Core.IServices", "ScheduleJob.Core.IServices\ScheduleJob.Core.IServices.csproj", "{43CD595D-3E2A-4DE7-A878-64FB0D85E426}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleJob.Core.Utility", "ScheduleJob.Core.Utility\ScheduleJob.Core.Utility.csproj", "{6FE463FD-6A6F-4614-8CC3-8C40BC7F796E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleJob.Core.Utility", "ScheduleJob.Core.Utility\ScheduleJob.Core.Utility.csproj", "{6FE463FD-6A6F-4614-8CC3-8C40BC7F796E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduleJob.Core.Tasks", "ScheduleJob.Core.Tasks\ScheduleJob.Core.Tasks.csproj", "{24D6E895-88B0-4E83-BE05-E53B1E5CD686}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{6FE463FD-6A6F-4614-8CC3-8C40BC7F796E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FE463FD-6A6F-4614-8CC3-8C40BC7F796E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FE463FD-6A6F-4614-8CC3-8C40BC7F796E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24D6E895-88B0-4E83-BE05-E53B1E5CD686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24D6E895-88B0-4E83-BE05-E53B1E5CD686}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24D6E895-88B0-4E83-BE05-E53B1E5CD686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24D6E895-88B0-4E83-BE05-E53B1E5CD686}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

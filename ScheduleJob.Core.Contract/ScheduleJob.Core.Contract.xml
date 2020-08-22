@@ -9,6 +9,116 @@
             页码
             </summary>
         </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.Name">
+            <summary>
+            任务名称
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.JobGroup">
+            <summary>
+            任务分组
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.Cron">
+            <summary>
+            任务运行时间表达式
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.AssemblyName">
+            <summary>
+            任务所在DLL对应的程序集名称
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.ClassName">
+            <summary>
+            任务所在类
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.Remark">
+            <summary>
+            任务描述
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.BeginTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.TriggerType">
+            <summary>
+            触发器类型（0、simple 1、cron）
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.IntervalSecond">
+            <summary>
+            执行间隔时间, 秒为单位
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.JobParams">
+            <summary>
+            执行传参
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.IsApiUrl">
+            <summary>
+            （0、否 1、是）
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.ApiUrl">
+            <summary>
+            url
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.RequestValue">
+            <summary>
+            请求体(仅POST有效)
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.MethodType">
+            <summary>
+            POST or GET
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.HandlerJobNum">
+            <summary>
+            负责人工号(不填默认是你,多个负责人间用半角分号隔开，比如：123456;11134)
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.Dtos.TasksQzInputDto.ErrorEmail">
+            <summary>
+            报警邮箱
+            </summary>
+        </member>
+        <member name="T:ScheduleJob.Core.Contract.MessageModel`1">
+            <summary>
+            通用返回信息类
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.MessageModel`1.status">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.MessageModel`1.success">
+            <summary>
+            操作是否成功
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.MessageModel`1.msg">
+            <summary>
+            返回信息
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.MessageModel`1.response">
+            <summary>
+            返回数据集合
+            </summary>
+        </member>
         <member name="P:ScheduleJob.Core.Contract.Models.MenuInfo.Name">
             <summary>
             菜单名称
@@ -458,6 +568,101 @@
             </summary>
             <param name="config">config</param>
             <returns>返回值</returns>
+        </member>
+        <member name="T:ScheduleJob.Core.Contract.TasksQz">
+            <summary>
+            任务计划表
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.Name">
+            <summary>
+            任务名称
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.JobGroup">
+            <summary>
+            任务分组
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.Cron">
+            <summary>
+            任务运行时间表达式
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.AssemblyName">
+            <summary>
+            任务所在DLL对应的程序集名称
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.ClassName">
+            <summary>
+            任务所在类
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.Remark">
+            <summary>
+            任务描述
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.RunTimes">
+            <summary>
+            执行次数
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.TriggerType">
+            <summary>
+            触发器类型（0、simple 1、cron）
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.IntervalSecond">
+            <summary>
+            执行间隔时间, 秒为单位
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.IsStart">
+            <summary>
+            是否启动
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.JobParams">
+            <summary>
+            执行传参
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.IsApiUrl">
+            <summary>
+            （0、否 1、是）
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.ApiUrl">
+            <summary>
+            url
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.RequestValue">
+            <summary>
+            请求体(仅POST有效)
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.MethodType">
+            <summary>
+            1:GET  2:POST
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.HandlerJobNum">
+            <summary>
+            负责人工号(不填默认是你,多个负责人间用半角分号隔开，比如：123456;11134)
+            </summary>
+        </member>
+        <member name="P:ScheduleJob.Core.Contract.TasksQz.ErrorEmail">
+            <summary>
+            报警邮箱
+            </summary>
         </member>
     </members>
 </doc>
